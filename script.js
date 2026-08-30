@@ -9,6 +9,9 @@ var catagoriesdata = document.getElementById("catagoriesdata")
 var catagories = document.querySelector(".catagories");
 
 catagories.addEventListener("click", (e) => {
+
+
+    alert(e.target.textContent)
     fetch(`https://opensheet.elk.sh/${sh}/product`)
         .then(res => res.json())
         .then(data => {
