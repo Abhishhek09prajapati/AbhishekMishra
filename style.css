@@ -23,7 +23,7 @@ body {
 .catagories {
     width: 100%;
     padding: 25px;
-    
+
     background: #ffffff;
     border-bottom: 1px solid #e5e7eb;
 
@@ -40,24 +40,17 @@ body {
 .catagories span {
     min-width: 120px;
     height: 48px;
-
     padding: 0 18px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: #f1f5f9;
     color: #334155;
-
     border: 1px solid #e2e8f0;
     border-radius: 12px;
-
     font-size: 15px;
     font-weight: 600;
-
     cursor: pointer;
-
     transition: all 0.25s ease;
 }
 
@@ -93,20 +86,73 @@ body {
 
 .catagoriesdata {
     width: 100%;
-    min-height: 400px;
-
-    padding: 25px;
-
-    background: #f8fafc;
-
-    border-top: 1px solid #e5e7eb;
+    height: 300px;
+    border: 1px solid black;
+    background-color: red;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
+.itmes1 {
+    width: max-content;
+    height: max-content;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px;
+    justify-content: center;
+    align-items: center;
+}
+.itmes1 span{
+    color: rgb(90, 87, 87);
+}
+.itmes1 img{
+    width: 100px;
+    height: 100px;
+}
+.additmes{
+    /* background-color: yellow; */
+    width: max-content;
+    padding: 10px;
+}
+.additmes label{
+    background-color: #27e941;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.additmes label:nth-child(2){
+    background-color: yellow;
+}
+.billdata{
+    width: 100%;
+    height: 500px;
+    border: 1px solid black;
+    background-color: green;
+    position: relative;
+}
+.ownerinformation{
+    background-color: rgb(209, 238, 47);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px;
+    width: fit-content;
+    
+}
+.ownerinformation label:nth-child(3){
+    /* background-color: white; */
+    width: 50%;
+}
+.tabledata{
+    background-color: red;
+    width: 100%;
+    border: 1px solid;
+}
+.tabledata th,td{
+    text-align: center;
+}
 @media (max-width: 600px) {
 
     .catagories {
