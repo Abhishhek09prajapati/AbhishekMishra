@@ -104,6 +104,7 @@ body {
     padding: 10px 5px;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 .itmes1 span{
     color: rgb(90, 87, 87);
@@ -111,6 +112,7 @@ body {
 .itmes1 img{
     width: 100px;
     height: 100px;
+   
 }
 .additmes{
     /* background-color: yellow; */

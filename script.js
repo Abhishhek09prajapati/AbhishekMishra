@@ -35,15 +35,26 @@ catagories.addEventListener("click", (e) => {
                 var minusdata = div.querySelector(".minus");
                 var plusdata = div.querySelector(".plus");
                 var quantity = div.querySelector(".quantity");
+
+
+                var serial = 0
+
                 // PLUS
                 plusdata.addEventListener("click", () => {
                     var value = Number(quantity.textContent);
                     value++;
                     quantity.textContent = value;
+
                     var existingRow = [...additmes.rows].find(row => {
                         return row.cells[1]?.textContent === l.name;
                     });
+
+                    var itemRate = parseFloat(l.rate) || 0;
+
                     if (!existingRow) {
+                        // Increment serial only for NEW items added to table
+                        serial = serial + 1;
+
                         var row = additmes.insertRow(-1);
                         var cell1 = row.insertCell(0);
                         var cell2 = row.insertCell(1);
@@ -51,55 +62,67 @@ catagories.addEventListener("click", (e) => {
                         var cell4 = row.insertCell(3);
                         var cell5 = row.insertCell(4);
                         var cell6 = row.insertCell(5);
-                        cell1.textContent = "a8";
+
+                        cell1.textContent = `${serial}`;
                         cell2.textContent = l.name;
                         cell3.textContent = value;
-                        // rate × quantity
                         cell4.textContent = l.rate;
                         cell5.textContent = l.mrp;
-                        cell6.textContent = parseInt(l.rate) * value;
-                        totalAmounta += parseInt(l.rate) * value
-                        totalAmount.innerHTML = `${totalAmounta}`
+                        cell6.textContent = itemRate * value;
+
+                        // Add single item price to overall total
+                        totalAmounta += itemRate;
                     } else {
+                        // Update quantity and line item total
                         existingRow.cells[2].textContent = value;
-                        // rate × updated quantity
-                        existingRow.cells[5].textContent =
-                            parseInt(l.rate) * value;
-                        totalAmounta = parseInt(l.rate) * value
-                        totalAmount.innerHTML = `${totalAmounta}`
+                        existingRow.cells[5].textContent = itemRate * value;
+
+                        // Add price of ONE unit increase to overall total
+                        totalAmounta += itemRate;
                     }
 
+                    totalAmount.textContent = totalAmounta;
                 });
+
+
+
                 // MINUS
                 minusdata.addEventListener("click", () => {
                     var value = Number(quantity.textContent);
-                    if (value > 0) {
-                        value--;
-                    }
+
+                    // Do nothing if quantity is already 0
+                    if (value <= 0) return;
+
+                    value--;
                     quantity.textContent = value;
-                    // Table me product ki row find karo
+
                     var existingRow = [...additmes.rows].find(row => {
                         return row.cells[1]?.textContent === l.name;
                     });
+
+                    var itemRate = parseFloat(l.rate) || 0;
+
                     if (existingRow) {
+                        // Subtract single unit rate from overall cart total
+                        totalAmounta -= itemRate;
+                        totalAmount.textContent = totalAmounta;
+
                         if (value === 0) {
-                            // Quantity 0 ho gayi to row delete
+                            // Delete row when quantity reaches zero
                             existingRow.remove();
                         } else {
-                            // Quantity update
+                            // Update quantity and line item total
                             existingRow.cells[2].textContent = value;
-                            existingRow.cells[5].textContent =
-                                parseInt(l.rate) * value;
-                            totalAmounta = parseInt(l.rate) * value
-                            totalAmount.innerHTML = `${totalAmounta}`
-
+                            existingRow.cells[5].textContent = itemRate * value;
                         }
-
                     }
-
                 });
 
             });
+
+
+
+
 
         })
         .catch(err => {
