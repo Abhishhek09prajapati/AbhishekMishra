@@ -86,75 +86,112 @@ body {
 
 .catagoriesdata {
     width: 100%;
-    height: 300px;
+    height: 700px;
     border: 1px solid black;
-    background-color: red;
+    /* background-color: red; */
     overflow-y: scroll;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    align-content: flex-start;
+    padding: 20px;
 }
 
 .itmes1 {
-    width: max-content;
+    width: 100%;
     height: max-content;
     border: 1px solid black;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 10px 5px;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: white;
+
 }
-.itmes1 span{
+
+.itmes1 .additmes {
+
+    display: flex;
+    flex-direction: row;
+}
+
+.itmes1 span {
     color: rgb(90, 87, 87);
 }
-.itmes1 img{
+
+.itmes1 img {
     width: 100px;
     height: 100px;
-   
+
 }
-.additmes{
+
+.additmes {
     /* background-color: yellow; */
     width: max-content;
     padding: 10px;
 }
-.additmes label{
+
+.additmes label {
     background-color: #27e941;
     padding: 10px;
     border: 1px solid black;
     border-radius: 10px;
 }
-.additmes label:nth-child(2){
+
+.additmes label:nth-child(2) {
     background-color: yellow;
 }
-.billdata{
+
+.billdata {
     width: 100%;
     height: 500px;
     border: 1px solid black;
-    background-color: green;
+    /* background-color: green; */
     position: relative;
+    display: none;
 }
-.ownerinformation{
-    background-color: rgb(209, 238, 47);
+
+.ownerinformation {
+    /* background-color: rgb(209, 238, 47); */
     display: flex;
     flex-direction: column;
     padding: 10px 5px;
     width: fit-content;
-    
+
 }
-.ownerinformation label:nth-child(3){
+
+.ownerinformation label:nth-child(3) {
     /* background-color: white; */
     width: 50%;
 }
-.tabledata{
-    background-color: red;
+
+.tabledata {
+    /* background-color: red; */
     width: 100%;
     border: 1px solid;
 }
-.tabledata th,td{
+
+.tabledata th,
+td {
     text-align: center;
+    border: 1px solid black;
 }
+
+.showbill {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 100%;
+    height: 50px;
+    background-color: #2563eb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
 @media (max-width: 600px) {
 
     .catagories {

@@ -5,10 +5,35 @@ var catagories = document.querySelector(".catagories");
 var totalAmount = document.getElementById("totalAmount");
 let totalAmounta = 0
 
+
+
+
+fetch(`https://opensheet.elk.sh/${sh}/catagoriess`)
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(k => { 
+            var span = document.createElement("span");
+            span.textContent = k.catagories;
+            catagories.append(span);
+        })
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 catagories.addEventListener("click", (e) => {
-
-
-
     fetch(`https://opensheet.elk.sh/${sh}/product`)
         .then(res => res.json())
         .then(data => {
@@ -23,7 +48,7 @@ catagories.addEventListener("click", (e) => {
                 div.innerHTML = `
                 <img src="./images/phone.png" alt="">                
                 <label>${l.name}</label>                
-                <span>${l.description}</span>
+                
 
                 <div class="additmes">
                     <label class="plus">+</label>
@@ -37,10 +62,11 @@ catagories.addEventListener("click", (e) => {
                 var quantity = div.querySelector(".quantity");
 
 
-                var serial = 0
+             
 
                 // PLUS
                 plusdata.addEventListener("click", () => {
+                   
                     var value = Number(quantity.textContent);
                     value++;
                     quantity.textContent = value;
@@ -53,7 +79,7 @@ catagories.addEventListener("click", (e) => {
 
                     if (!existingRow) {
                         // Increment serial only for NEW items added to table
-                        serial = serial + 1;
+                        
 
                         var row = additmes.insertRow(-1);
                         var cell1 = row.insertCell(0);
@@ -63,7 +89,7 @@ catagories.addEventListener("click", (e) => {
                         var cell5 = row.insertCell(4);
                         var cell6 = row.insertCell(5);
 
-                        cell1.textContent = `${serial}`;
+                        cell1.textContent = row.rowIndex; // Serial number;
                         cell2.textContent = l.name;
                         cell3.textContent = value;
                         cell4.textContent = l.rate;
@@ -76,12 +102,12 @@ catagories.addEventListener("click", (e) => {
                         // Update quantity and line item total
                         existingRow.cells[2].textContent = value;
                         existingRow.cells[5].textContent = itemRate * value;
-
+                        
                         // Add price of ONE unit increase to overall total
                         totalAmounta += itemRate;
                     }
 
-                    totalAmount.textContent = totalAmounta;
+                    totalAmount.textContent = `Your Total Payable Amount : ${totalAmounta}`;
                 });
 
 
@@ -105,7 +131,7 @@ catagories.addEventListener("click", (e) => {
                     if (existingRow) {
                         // Subtract single unit rate from overall cart total
                         totalAmounta -= itemRate;
-                        totalAmount.textContent = totalAmounta;
+                        totalAmount.textContent = `Your Total Payable Amount : ${totalAmounta}`;
 
                         if (value === 0) {
                             // Delete row when quantity reaches zero
@@ -129,3 +155,7 @@ catagories.addEventListener("click", (e) => {
             console.error("Error:", err);
         });
 });
+
+document.getElementById("showbill").addEventListener("click", () => {
+    document.querySelector(".billdata").style.display = "block";
+})
