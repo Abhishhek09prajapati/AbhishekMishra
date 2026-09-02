@@ -147,7 +147,7 @@ body {
     width: 100%;
     height: 500px;
     border: 1px solid black;
-    /* background-color: green; */
+    background-color: white;
     position: relative;
     display: none;
 }
@@ -170,6 +170,7 @@ body {
     /* background-color: red; */
     width: 100%;
     border: 1px solid;
+   
 }
 
 .tabledata th,

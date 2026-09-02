@@ -46,7 +46,7 @@ catagories.addEventListener("click", (e) => {
                 div.className = "itmes1";
 
                 div.innerHTML = `
-                <img src="./images/phone.png" alt="">                
+                <img src="./images/${l.image}" alt="loading...">                
                 <label>${l.name}</label>                
                 
 
