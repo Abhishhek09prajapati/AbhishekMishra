@@ -11,7 +11,7 @@ let totalAmounta = 0
 fetch(`https://opensheet.elk.sh/${sh}/catagoriess`)
     .then(res => res.json())
     .then(data => {
-        data.forEach(k => { 
+        data.forEach(k => {
             var span = document.createElement("span");
             span.textContent = k.catagories;
             catagories.append(span);
@@ -61,12 +61,9 @@ catagories.addEventListener("click", (e) => {
                 var plusdata = div.querySelector(".plus");
                 var quantity = div.querySelector(".quantity");
 
-
-             
-
                 // PLUS
                 plusdata.addEventListener("click", () => {
-                   
+
                     var value = Number(quantity.textContent);
                     value++;
                     quantity.textContent = value;
@@ -79,7 +76,7 @@ catagories.addEventListener("click", (e) => {
 
                     if (!existingRow) {
                         // Increment serial only for NEW items added to table
-                        
+
 
                         var row = additmes.insertRow(-1);
                         var cell1 = row.insertCell(0);
@@ -102,7 +99,7 @@ catagories.addEventListener("click", (e) => {
                         // Update quantity and line item total
                         existingRow.cells[2].textContent = value;
                         existingRow.cells[5].textContent = itemRate * value;
-                        
+
                         // Add price of ONE unit increase to overall total
                         totalAmounta += itemRate;
                     }
@@ -159,3 +156,62 @@ catagories.addEventListener("click", (e) => {
 document.getElementById("showbill").addEventListener("click", () => {
     document.querySelector(".billdata").style.display = "block";
 })
+
+
+document.getElementById("share").addEventListener("click", async () => {
+
+    const bill = document.getElementById("billdata");
+
+    try {
+
+        const canvas = await html2canvas(bill, {
+            backgroundColor: "#ffffff",
+            scale: 2
+        });
+
+        canvas.toBlob(async (blob) => {
+
+            const file = new File(
+                [blob],
+                "bill.png",
+                { type: "image/png" }
+            );
+
+            // Mobile browser: native share
+            if (navigator.share && navigator.canShare?.({ files: [file] })) {
+
+                await navigator.share({
+                    title: "Bill",
+                    text: "My Bill",
+                    files: [file]
+                });
+
+            } else {
+
+                // Desktop/fallback
+                const url = URL.createObjectURL(blob);
+
+                const whatsappText =
+                    "Hello, here is my bill.";
+
+                window.open(
+                    `https://wa.me/?text=${encodeURIComponent(whatsappText)}`,
+                    "_blank"
+                );
+
+                // PNG download
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "bill.png";
+                a.click();
+
+                URL.revokeObjectURL(url);
+            }
+
+        }, "image/png");
+
+    } catch (error) {
+        console.error(error);
+    }
+
+});
