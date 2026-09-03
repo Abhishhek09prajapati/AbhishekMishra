@@ -5,8 +5,9 @@ var catagories = document.querySelector(".catagories");
 var totalAmount = document.getElementById("totalAmount");
 let totalAmounta = 0
 
+var waitdiv = document.querySelector(".pleasewait");
 
-
+waitdiv.style.display = "none";
 
 fetch(`https://opensheet.elk.sh/${sh}/catagoriess`)
     .then(res => res.json())
@@ -16,22 +17,24 @@ fetch(`https://opensheet.elk.sh/${sh}/catagoriess`)
             var img = document.createElement("img");
 
             img.src = `./images/phone.png`;
-            
+
 
             span.textContent = k.catagories;
             span.append(img);
             catagories.append(span);
 
-            
-            
+
+
         })
         companydeatikes(data)
     })
 
 catagories.addEventListener("click", (e) => {
+    waitdiv.style.display = "block";
     fetch(`https://opensheet.elk.sh/${sh}/product`)
         .then(res => res.json())
         .then(data => {
+            waitdiv.style.display = "none";
             var filterData = data.filter(k => {
                 return k.catagories === e.target.textContent;
             });
@@ -55,7 +58,7 @@ catagories.addEventListener("click", (e) => {
                 var minusdata = div.querySelector(".minus");
                 var plusdata = div.querySelector(".plus");
                 var quantity = div.querySelector(".quantity");
-
+                
                 // PLUS
                 plusdata.addEventListener("click", () => {
 
@@ -139,7 +142,7 @@ catagories.addEventListener("click", (e) => {
             });
 
 
-
+            
 
 
         })
@@ -213,9 +216,9 @@ document.getElementById("share").addEventListener("click", async () => {
 
 function companydeatikes(data) {
     document.getElementById("companyname").textContent = data[0].companyDetails;
-    document.getElementById("gst").innerHTML = `<strong>GST</strong> : ${data[1].companyDetails}` ;
-    document.getElementById("addresss").innerHTML = `<strong>Address</strong> : ${data[2].companyDetails}` ;
-    document.getElementById("mobileno").innerHTML = `<strong>Mobile No.</strong> : ${data[3].companyDetails}` ;
+    document.getElementById("gst").innerHTML = `<strong>GST</strong> : ${data[1].companyDetails}`;
+    document.getElementById("addresss").innerHTML = `<strong>Address</strong> : ${data[2].companyDetails}`;
+    document.getElementById("mobileno").innerHTML = `<strong>Mobile No.</strong> : ${data[3].companyDetails}`;
 }
 
 

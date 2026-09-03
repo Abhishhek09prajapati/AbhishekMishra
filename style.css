@@ -31,13 +31,13 @@ body {
     height: max-content;
     display: flex;
     gap: 10px;
-    box-shadow: 1p 2px 4px rgba(219, 4, 4, 0.1);    
+    box-shadow: 1p 2px 4px rgba(219, 4, 4, 0.1);
 }
 
 
 /* Category Button */
 
-.catagories span { 
+.catagories span {
     background-color: white;
     color: #000308;
     border: 1px solid #2563eb;
@@ -52,11 +52,13 @@ body {
     font-size: 15px;
     font-weight: 500;
     text-align: center;
-    white-space: nowrap; /* text single line */
+    white-space: nowrap;
+    /* text single line */
     cursor: pointer;
     transition: 0.2s ease;
     box-shadow: 2px 4px 8px rgba(37, 99, 235, 0.25);
 }
+
 .catagories span img {
     width: 30px;
     height: 30px;
@@ -213,5 +215,18 @@ td {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.pleasewait {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: max-content;
+    height: max-content;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    padding: 20px;   
 
 }
