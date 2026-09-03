@@ -22,24 +22,24 @@ body {
 
 .catagories {
     width: 100%;
-    padding: 25px;
+    padding: 20px;
     overflow-y: scroll;
     background: #ffffff;
     border-bottom: 1px solid #e5e7eb;
     height: max-content;
     display: flex;
-    /* flex-wrap: wrap; */
-    gap: 12px;
-    /* justify-content: center; */
-    /* align-content: flex-start; */
+    gap: 10px;
+    box-shadow: 1p 2px 4px rgba(219, 4, 4, 0.1);    
 }
 
 
 /* Category Button */
 
 .catagories span {
+    
+
     background-color: white;
-    color: #2563eb;
+    color: #000308;
     border: 1px solid #2563eb;
 
     display: flex;
@@ -48,10 +48,12 @@ body {
     justify-content: center;
 
     width: fit-content;
-    height: auto;
+    height: max-content;
 
-    padding: 8px 16px;
+    padding: 10px 16px;
     border-radius: 8px;
+
+
 
     font-size: 15px;
     font-weight: 500;
@@ -220,25 +222,4 @@ td {
     align-items: center;
     justify-content: center;
 
-}
-
-@media (max-width: 600px) {
-
-    .catagories {
-        padding: 15px;
-        gap: 8px;
-    }
-
-    .catagories span {
-        min-width: calc(50% - 4px);
-        height: 45px;
-
-        padding: 0 10px;
-
-        font-size: 14px;
-    }
-
-    .catagoriesdata {
-        padding: 15px;
-    }
 }
