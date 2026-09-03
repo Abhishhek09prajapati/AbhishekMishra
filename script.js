@@ -30,11 +30,11 @@ fetch(`https://opensheet.elk.sh/${sh}/catagoriess`)
     })
 
 catagories.addEventListener("click", (e) => {
-    waitdiv.style.display = "block";
+
     fetch(`https://opensheet.elk.sh/${sh}/product`)
         .then(res => res.json())
         .then(data => {
-            waitdiv.style.display = "none";
+
             var filterData = data.filter(k => {
                 return k.catagories === e.target.textContent;
             });
@@ -58,7 +58,7 @@ catagories.addEventListener("click", (e) => {
                 var minusdata = div.querySelector(".minus");
                 var plusdata = div.querySelector(".plus");
                 var quantity = div.querySelector(".quantity");
-                
+
                 // PLUS
                 plusdata.addEventListener("click", () => {
 
@@ -142,7 +142,7 @@ catagories.addEventListener("click", (e) => {
             });
 
 
-            
+
 
 
         })
