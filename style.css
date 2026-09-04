@@ -142,7 +142,6 @@ body {
     width: max-content;
     padding: 10px;
 }
-
 .additmes label {
     background-color: #27e941;
     padding: 10px;
@@ -162,6 +161,7 @@ body {
     position: relative;
     display: none;
     padding: 10px;
+    overflow-x: scroll;
 }
 
 .ownerinformation {

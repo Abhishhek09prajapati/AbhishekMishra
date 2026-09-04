@@ -17,11 +17,11 @@ fetch(`https://opensheet.elk.sh/${sh}/catagoriess`)
             var img = document.createElement("img");
 
             img.src = `./images/phone.png`;
-
+            span.style.fontSize= "10px"
 
             span.textContent = k.catagories;
-            span.append(img);
-            catagories.append(span);
+            span.prepend(img);
+            catagories.prepend(span);
 
 
 
