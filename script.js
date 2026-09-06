@@ -153,6 +153,11 @@ catagories.addEventListener("click", (e) => {
 
 document.getElementById("showbill").addEventListener("click", () => {
     document.querySelector(".billdata").style.display = "block";
+    document.querySelector(".billdata").style.position = "fixed";
+    document.querySelector(".billdata").style.top = "50%";
+    document.querySelector(".billdata").style.left = "50%";
+    document.querySelector(".billdata").style.transform = "translate(-50%, -50%)";
+
 })
 
 
@@ -221,5 +226,7 @@ function companydeatikes(data) {
     document.getElementById("mobileno").innerHTML = `<strong>Mobile No.</strong> : ${data[3].companyDetails}`;
 }
 
-
+document.getElementById("closebtn").addEventListener("click", () => {
+    document.querySelector(".billdata").style.display = "none";
+})
 
