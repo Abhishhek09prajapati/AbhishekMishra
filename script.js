@@ -153,33 +153,22 @@ catagories.addEventListener("click", (e) => {
 
 document.getElementById("showbill").addEventListener("click", () => {
     document.querySelector(".billdata").style.display = "block";
-    document.querySelector(".billdata").style.position = "fixed";
-    document.querySelector(".billdata").style.top = "50%";
-    document.querySelector(".billdata").style.left = "50%";
-    document.querySelector(".billdata").style.transform = "translate(-50%, -50%)";
-
-})
+    })
 
 
 document.getElementById("share").addEventListener("click", async () => {
-
     const bill = document.getElementById("billdata");
-
     try {
-
         const canvas = await html2canvas(bill, {
             backgroundColor: "#ffffff",
             scale: 2
         });
-
         canvas.toBlob(async (blob) => {
-
             const file = new File(
                 [blob],
                 "bill.png",
                 { type: "image/png" }
             );
-
             // Mobile browser: native share
             if (navigator.share && navigator.canShare?.({ files: [file] })) {
 
@@ -207,7 +196,6 @@ document.getElementById("share").addEventListener("click", async () => {
                 a.href = url;
                 a.download = "bill.png";
                 a.click();
-
                 URL.revokeObjectURL(url);
             }
 
