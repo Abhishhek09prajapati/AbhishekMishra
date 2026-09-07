@@ -39,13 +39,17 @@ catagories.addEventListener("click", (e) => {
                 return k.catagories === e.target.textContent;
             });
             catagoriesdata.innerHTML = "";
+            
             filterData.forEach(l => {
+                document.getElementById("productnumber").textContent = `Total Product : ${filterData.length}`;
                 var div = document.createElement("div");
                 div.className = "itmes1";
 
                 div.innerHTML = `
                 <img src="./images/${l.image}" alt="loading...">                
-                <label>${l.name}</label>                
+                <label>${l.name}</label>  
+                
+                <label class="ratedata">Rate : ${l.rate} , MRP : ${l.mrp}</label>
                 
 
                 <div class="additmes">
