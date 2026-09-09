@@ -46,7 +46,7 @@ catagories.addEventListener("click", (e) => {
                 div.className = "itmes1";
 
                 div.innerHTML = `
-                <img src="./images/${l.image}" alt="loading...">                
+                <img src="./images/${l.image}" class="product-image" alt="loading...">                
                 <label>${l.name}</label>  
                 
                 <label class="ratedata">Rate : ${l.rate} , MRP : ${l.mrp}</label>
@@ -57,7 +57,19 @@ catagories.addEventListener("click", (e) => {
                     <label class="quantity">0</label>
                     <label class="minus">-</label>
                 </div>
-            `;
+            `
+            
+                div.querySelector(".product-image").addEventListener("click", () => {
+                    document.querySelector(".image-div").style.display = "" ;
+                    document.getElementById("imageproduct").src = `./images/${l.image}`;
+                    });
+
+
+            
+            ;
+
+
+
                 catagoriesdata.append(div);
                 var minusdata = div.querySelector(".minus");
                 var plusdata = div.querySelector(".plus");
@@ -221,4 +233,10 @@ function companydeatikes(data) {
 document.getElementById("closebtn").addEventListener("click", () => {
     document.querySelector(".billdata").style.display = "none";
 })
+
+document.getElementById("closebtn1").addEventListener("click", () => {
+    document.querySelector(".image-div").style.display = "none";
+})
+
+document.querySelector(".image-div").style.display = "none";
 
