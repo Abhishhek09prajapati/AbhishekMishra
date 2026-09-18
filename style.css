@@ -139,6 +139,18 @@ body {
 .itmes1 img {
     width: 100px;
     height: 100px;
+    object-fit: contain;
+    display: inline-block;
+    margin: 0px 10px;
+    
+
+    background: white;
+    /* border-radius: 50%; */
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+
+    transition: 0.3s ease;
+    
 
 }
 
