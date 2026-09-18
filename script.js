@@ -210,6 +210,7 @@ document.getElementById("share").addEventListener("click", async () => {
                 // PNG download
                 const a = document.createElement("a");
                 a.href = url;
+
                 a.download = "bill.png";
                 a.click();
                 URL.revokeObjectURL(url);
