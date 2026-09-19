@@ -42,6 +42,10 @@ function clickmeandsearcch(t) {
 
                 joinLinks.append(div)
 
+                div.addEventListener("click",()=>{
+                    window.open(`${k.Whatsappgrouplinks}`,"_blanks")
+                })
+
             })
 
         })
