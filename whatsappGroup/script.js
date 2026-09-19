@@ -45,12 +45,23 @@ function clickmeandsearcch(t) {
                 var div = document.createElement("div")
                 div.className = "joinDiv"
                 div.innerHTML = `<h3>${k.WhatsappGorupName}</h3>
-            <button>Join Now</button>`
+            <div>
+            <button class="btnjoin">Join Now</button>
+             <button class="btnreport">Report Group</button></div>
+            `
 
                 joinLinks.append(div)
 
-                div.addEventListener("click", () => {
+                var a = div.querySelector(".btnjoin")
+                var b = div.querySelector(".btnreport")
+
+
+                a.addEventListener("click",()=>{
                     window.open(`${k.Whatsappgrouplinks}`, "_blanks")
+                })
+                b.addEventListener("click",()=>{
+                     var url = `https://wa.me/917607658761?text=${k.Whatsappgrouplinks}, I reports this Gourp Links `
+                    window.open(`${url}`, "_blanks")
                 })
 
             })
