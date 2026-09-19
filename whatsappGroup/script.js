@@ -31,7 +31,7 @@ fetch("https://api.npoint.io/f1c1bf09eb96314477d5?t=" + Date.now())
 fetch(`https://opensheet.elk.sh/${sh}/shop`)
     .then(res => res.json())
     .then(data => {
-        data.slice(0,25).forEach(k => {
+        data.slice(0, 25).forEach(k => {
             var div = document.createElement("div")
             div.className = "joinDiv"
             div.innerHTML = `<h3>${k.WhatsappGorupName}</h3>
@@ -145,7 +145,23 @@ function submitBtn() {
 
 
 addDiv.addEventListener("click", () => {
+    koko()
 
+});
+
+
+cataselection.addEventListener("change", (e) => {
+    const selectedCategory = e.target.value;
+    selectData = selectedCategory.trim()
+
+});
+
+document.getElementById("ag").addEventListener("click", () => {
+    koko()
+})
+
+
+function koko() {
     addData.style.display = "block"
 
     cataselection.innerHTML = "";
@@ -167,11 +183,4 @@ addDiv.addEventListener("click", () => {
 
         cataselection.appendChild(op);
     });
-});
-
-
-cataselection.addEventListener("change", (e) => {
-    const selectedCategory = e.target.value;
-    selectData = selectedCategory.trim()
-
-});
+}
