@@ -28,7 +28,34 @@ fetch("https://api.npoint.io/f1c1bf09eb96314477d5?t=" + Date.now())
         });
     })
 
+fetch(`https://opensheet.elk.sh/${sh}/shop`)
+    .then(res => res.json())
+    .then(data => {
+        data.slice(0,25).forEach(k => {
+            var div = document.createElement("div")
+            div.className = "joinDiv"
+            div.innerHTML = `<h3>${k.WhatsappGorupName}</h3>
+            <div>
+            <button class="btnjoin">Join Now</button>
+             <button style="background-color:red" class="btnreport">Report Group</button></div>
+            `
 
+            joinLinks.append(div)
+
+            var a = div.querySelector(".btnjoin")
+            var b = div.querySelector(".btnreport")
+
+
+            a.addEventListener("click", () => {
+                window.open(`${k.Whatsappgrouplinks}`, "_blanks")
+            })
+            b.addEventListener("click", () => {
+                var url = `https://wa.me/917607658761?text=${k.Whatsappgrouplinks}, I reports this Gourp Links `
+                window.open(`${url}`, "_blanks")
+            })
+
+        })
+    })
 
 
 function clickmeandsearcch(t) {
@@ -47,7 +74,7 @@ function clickmeandsearcch(t) {
                 div.innerHTML = `<h3>${k.WhatsappGorupName}</h3>
             <div>
             <button class="btnjoin">Join Now</button>
-             <button class="btnreport">Report Group</button></div>
+             <button style="background-color:red" class="btnreport">Report Group</button></div>
             `
 
                 joinLinks.append(div)
@@ -56,11 +83,11 @@ function clickmeandsearcch(t) {
                 var b = div.querySelector(".btnreport")
 
 
-                a.addEventListener("click",()=>{
+                a.addEventListener("click", () => {
                     window.open(`${k.Whatsappgrouplinks}`, "_blanks")
                 })
-                b.addEventListener("click",()=>{
-                     var url = `https://wa.me/917607658761?text=${k.Whatsappgrouplinks}, I reports this Gourp Links `
+                b.addEventListener("click", () => {
+                    var url = `https://wa.me/917607658761?text=${k.Whatsappgrouplinks}, I reports this Gourp Links `
                     window.open(`${url}`, "_blanks")
                 })
 
@@ -80,7 +107,7 @@ closeSpan.addEventListener("click", () => {
     addData.style.display = "none"
 })
 addData.style.display = "none"
-function submitBtn() { 
+function submitBtn() {
     var nameInput = document.getElementById("nameInput");
     var linkInput = document.getElementById("linkInput");
 
