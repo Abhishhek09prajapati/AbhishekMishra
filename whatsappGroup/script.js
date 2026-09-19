@@ -50,7 +50,7 @@ fetch(`https://opensheet.elk.sh/${sh}/shop`)
                 window.open(`${k.Whatsappgrouplinks}`, "_blanks")
             })
             b.addEventListener("click", () => {
-                var url = `https://wa.me/917607658761?text=${k.Whatsappgrouplinks}, I reports this Gourp Links `
+                var url = `https://wa.me/917607658761?text=${k.Whatsappgrouplinks} I reports this Gourp Links `
                 window.open(`${url}`, "_blanks")
             })
 
