@@ -147,7 +147,9 @@ body {
     background-color: rgb(7, 236, 18);
     width: max-content;
     padding: 10px 15px;
-    animation: aaa 0.2s alternate infinite ease-in-out;
+    border-radius: 5px;
+    border: 2px solid black;
+    animation: aaa 0.4s alternate infinite ease-in-out;
     
 }
 .addData{
