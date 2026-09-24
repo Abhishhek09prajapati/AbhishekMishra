@@ -1,5 +1,5 @@
 var logoimg = document.getElementById("logoimg");
-
+var s = document.getElementById("statuslabel")
 var images = [
     "/images/iconstarone.jpg",
     "/images/iconstartwo.jpg",
@@ -17,7 +17,7 @@ function v() {
         i = 0;
     }
 }
-
+s.style.display = "none"
 
 const sc = "https://script.google.com/macros/s/AKfycbzuxrjDHomBmOXcCOqNIVDD_LGS9jLOa7x9ofuTJDRCcrdaXfHUNSN8G924RzeDn-g2cQ/exec"
 
@@ -29,7 +29,7 @@ const gmail = document.getElementById("gmail");
 
 
 document.getElementById("submit-btn").addEventListener("click", function (event) {
-
+    s.style.display = "block"
     event.preventDefault();
 
     if (!nameInput.value || !mobile.value || !address.value || !gmail.value) {
@@ -37,17 +37,17 @@ document.getElementById("submit-btn").addEventListener("click", function (event)
         return;
     }
 
-    if(!/^\d{10}$/.test(mobile.value)) {
+    if (!/^\d{10}$/.test(mobile.value)) {
         alert("Please enter a valid 10-digit mobile number.");
         return;
     }
 
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(gmail.value)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(gmail.value)) {
         alert("Please enter a valid email address.");
         return;
     }
 
-    
+
     const data = {
         name: nameInput.value,
         mobile: mobile.value,
@@ -64,15 +64,15 @@ document.getElementById("submit-btn").addEventListener("click", function (event)
     })
         .then(response => response.text())
         .then(result => {
-
+            s.innerHTML = "Data Send Ho chuka hai"
             window.open("https://wa.me/917607658761?text=Hello, I have submitted the form.", "_blank");
-           
+
             nameInput.value = "";
             mobile.value = "";
             address.value = "";
             gmail.value = "";
 
-           
+
 
         })
         .catch(error => {
